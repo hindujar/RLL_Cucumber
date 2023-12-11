@@ -1,0 +1,41 @@
+package page;
+
+import java.net.MalformedURLException;
+import java.util.ArrayList;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+
+
+
+
+public class Basepage 
+{
+	public static WebDriver driver=null;
+	
+	public static void getBrowser() throws MalformedURLException, InterruptedException{
+		driver=new ChromeDriver();
+        driver.manage().window().maximize();
+		driver.get("https://www.bookswagon.com/");
+		Thread.sleep(3000);
+		driver.findElement(By.xpath("(//li[@id='ctl00_liTextBook'])/child::a")).click();
+		
+		ArrayList<String> tabs = new ArrayList<String>(driver.getWindowHandles());
+				
+				
+				//driver.switchTo().window(tabs.get(1));
+				
+				Thread.sleep(1000);
+				driver.findElement(By.xpath("(//div[@class='text-center position-relative blackhover'])[1]")).click();
+		        Thread.sleep(2000);
+		        driver.findElement(By.xpath("//input[@class='btn themebackground text-white']")).click();
+		        Thread.sleep(1000);
+		        driver.findElement(By.xpath("(//span[@class='itemcount'])[1]")).click();
+		        driver.close();
+		
+		}
+	
+
+}
